@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cc6eb518-8c0a-4360-a579-3d0a7f85ee3a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/example/lib/section/section.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/internal/cupertino_listview_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/internal/delegate/cupertino_sliver_builder_delegate.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/internal/delegate/cupertino_sliver_child_delegate.dart" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1n40WgirTFHXMRZVhKwByxU3Tq2" />
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="dart.analysis.tool.window.force.activate" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/example/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cc6eb518-8c0a-4360-a579-3d0a7f85ee3a" name="Default Changelist" comment="" />
+      <created>1610634088187</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1610634088187</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="22" y="90" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1610640785643">
+      <screen x="0" y="25" width="1440" height="813" />
+    </state>
+    <state x="22" y="90" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1440.813@0.25.1440.813" timestamp="1610640785643" />
+    <state x="280" y="237" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1610637965419">
+      <screen x="0" y="25" width="1440" height="813" />
+    </state>
+    <state x="280" y="237" key="#com.intellij.fileTypes.FileTypeChooser/0.25.1440.813@0.25.1440.813" timestamp="1610637965419" />
+    <state x="370" y="151" key="#com.intellij.ide.util.MemberChooser" timestamp="1610647236531">
+      <screen x="0" y="25" width="1440" height="813" />
+    </state>
+    <state x="370" y="151" key="#com.intellij.ide.util.MemberChooser/0.25.1440.813@0.25.1440.813" timestamp="1610647236531" />
+    <state x="295" y="225" key="#com.intellij.ide.util.TreeFileChooserDialog" timestamp="1610640766864">
+      <screen x="0" y="25" width="1440" height="813" />
+    </state>
+    <state x="295" y="225" key="#com.intellij.ide.util.TreeFileChooserDialog/0.25.1440.813@0.25.1440.813" timestamp="1610640766864" />
+    <state width="1073" height="209" key="GridCell.Tab.0.bottom" timestamp="1610653509171">
+      <screen x="0" y="25" width="1440" height="813" />
+    </state>
+    <state width="1073" height="209" key="GridCell.Tab.0.bottom/0.25.1440.813@0.25.1440.813" timestamp="1610653509171" />
+    <state width="1073" height="209" key="GridCell.Tab.0.center" timestamp="1610653509170">
+      <screen x="0" y="25" width="1440" height="813" />
+    </state>
+    <state width="1073" height="209" key="GridCell.Tab.0.center/0.25.1440.813@0.25.1440.813" timestamp="1610653509170" />
+    <state width="1073" height="209" key="GridCell.Tab.0.left" timestamp="1610653509170">
+      <screen x="0" y="25" width="1440" height="813" />
+    </state>
+    <state width="1073" height="209" key="GridCell.Tab.0.left/0.25.1440.813@0.25.1440.813" timestamp="1610653509170" />
+    <state width="1073" height="209" key="GridCell.Tab.0.right" timestamp="1610653509171">
+      <screen x="0" y="25" width="1440" height="813" />
+    </state>
+    <state width="1073" height="209" key="GridCell.Tab.0.right/0.25.1440.813@0.25.1440.813" timestamp="1610653509171" />
+    <state x="250" y="186" width="692" height="490" key="find.popup" timestamp="1610651528919">
+      <screen x="0" y="25" width="1440" height="813" />
+    </state>
+    <state x="250" y="186" width="692" height="490" key="find.popup/0.25.1440.813@0.25.1440.813" timestamp="1610651528919" />
+    <state width="460" height="114" key="javadoc.popup.new" timestamp="1610653437985">
+      <screen x="0" y="25" width="1440" height="813" />
+    </state>
+    <state width="460" height="114" key="javadoc.popup.new/0.25.1440.813@0.25.1440.813" timestamp="1610653437985" />
+    <state x="222" y="162" width="670" height="676" key="search.everywhere.popup" timestamp="1610640092794">
+      <screen x="0" y="25" width="1440" height="813" />
+    </state>
+    <state x="222" y="162" width="670" height="676" key="search.everywhere.popup/0.25.1440.813@0.25.1440.813" timestamp="1610640092794" />
+  </component>
+</project>
