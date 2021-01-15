@@ -1,5 +1,5 @@
 import 'package:cupertino_listview/internal/cupertino_listview_widget.dart';
-import 'package:example/section/section.dart';
+import 'package:example/section/console.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -41,8 +41,13 @@ class _MyHomePageState extends State<MyHomePage> {
         itemInSectionCount: (section) => _data[section].itemCount,
         sectionBuilder: this._buildSection,
         childBuilder: this._buildItem,
+        separatorBuilder: this._buildSeparator,
       ),
     );
+  }
+
+  Widget _buildSeparator(BuildContext context, int section, int index) {
+    return Divider(color: Theme.of(context).primaryColor,thickness: 2.0, indent: 20.0, endIndent: 20.0,);
   }
 
   Widget _buildSection(BuildContext context, int section) {
@@ -64,10 +69,10 @@ class _MyHomePageState extends State<MyHomePage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
-            child: Text(_data[section].consoleFromIndex(index)),
-            width: 60.0,
+            child: Text(_data[section][index].console),
+            width: 120.0,
           ),
-          Expanded(child: Text(_data[section][index])),
+          Expanded(child: Text(_data[section][index].attribute)),
         ],
       ),
     );
