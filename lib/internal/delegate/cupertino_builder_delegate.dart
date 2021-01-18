@@ -3,9 +3,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/sliver.dart';
 
+/// Section title builder
 typedef SectionBuilder = Widget Function(BuildContext context, int section, int absoluteIndex);
+
+/// Section children builder
 typedef SectionChildBuilder = Widget Function(BuildContext context, int section, int element, int absoluteIndex);
+
+/// Separator Builder, used between two section children
 typedef ChildSeparatorBuilder = Widget Function(BuildContext context, int section, int element, int absoluteIndex);
+
+/// Retrieve the number of items of a given section
 typedef SectionItemCount = int Function(int section);
 
 class CupertinoListBuilderDelegate extends CupertinoListDelegate {
