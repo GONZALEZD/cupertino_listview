@@ -1,11 +1,11 @@
-import 'package:cupertino_listview/internal/delegate/cupertino_sliver_child_delegate.dart';
+import 'package:cupertino_listview/internal/delegate/cupertino_list_delegate.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/sliver.dart';
 
-typedef SectionBuilder = Widget Function(BuildContext context, int section);
-typedef SectionChildBuilder = Widget Function(BuildContext context, int section, int index);
-typedef ChildSeparatorBuilder = Widget Function(BuildContext context, int section, int index);
+typedef SectionBuilder = Widget Function(BuildContext context, int section, int absoluteIndex);
+typedef SectionChildBuilder = Widget Function(BuildContext context, int section, int element, int absoluteIndex);
+typedef ChildSeparatorBuilder = Widget Function(BuildContext context, int section, int element, int absoluteIndex);
 typedef SectionItemCount = int Function(int section);
 
 class CupertinoListBuilderDelegate extends CupertinoListDelegate {
@@ -22,22 +22,22 @@ class CupertinoListBuilderDelegate extends CupertinoListDelegate {
       :super(sectionCount: sectionCount);
 
   @override
-  Widget buildItem(BuildContext context, int section, int index) {
+  Widget buildItem(BuildContext context, int section, int index, int absoluteIndex) {
     if(_hasSeparator) {
       if(index.isEven){
-        return this.childBuilder(context, section, index~/2);
+        return this.childBuilder(context, section, index~/2, absoluteIndex);
       }
       else {
-        return this.separatorBuilder(context, section, index~/2);
+        return this.separatorBuilder(context, section, index~/2, absoluteIndex);
       }
     }
     else {
-      return this.childBuilder(context, section, index);
+      return this.childBuilder(context, section, index, absoluteIndex);
     }
   }
 
   @override
-  Widget buildSection(BuildContext context, int section) => this.sectionBuilder(context, section);
+  Widget buildSection(BuildContext context, int section, int absoluteIndex) => this.sectionBuilder(context, section, absoluteIndex);
 
   @override
   int itemCount({int section}) {

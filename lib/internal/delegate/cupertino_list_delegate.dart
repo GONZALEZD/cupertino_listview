@@ -21,9 +21,9 @@ abstract class CupertinoListDelegate extends SliverChildDelegate {
     _estimatedElements = _sectionStarts.last + elementsPerSection.last + 1;
   }
 
-  Widget buildItem(BuildContext context, int section, int index);
+  Widget buildItem(BuildContext context, int section, int index, int absoluteIndex);
 
-  Widget buildSection(BuildContext context, int section);
+  Widget buildSection(BuildContext context, int section, int absoluteIndex);
 
   int _section(int index) => _sectionStarts.lastIndexWhere((element) => element <= index);
 
@@ -43,7 +43,7 @@ abstract class CupertinoListDelegate extends SliverChildDelegate {
 
     final nextSectionBox = findSection(listRender, childSection+1);
     if(nextSectionBox == null) {
-      return buildSection(context, childSection);
+      return buildSection(context, childSection, _sectionStarts[childSection]);
     }
 
     double offset = listRender.childScrollOffset(nextSectionBox) - scrollOffset;
@@ -57,7 +57,7 @@ abstract class CupertinoListDelegate extends SliverChildDelegate {
         child: OverflowBox(
           maxHeight: sectionHeight,
           alignment: Alignment.bottomCenter,
-          child: buildSection(context, childSection),
+          child: buildSection(context, childSection, null),
         ),
       ),
     );
@@ -94,11 +94,11 @@ abstract class CupertinoListDelegate extends SliverChildDelegate {
     }
     if (_sectionStarts.contains(index)) {
       final section = _sectionStarts.indexOf(index);
-      return buildSection(context, section);
+      return buildSection(context, section, index);
     } else {
       var section = _sectionStarts.lastIndexWhere((element) => element < index);
       final childIndex = index - _sectionStarts[section] - 1;
-      return buildItem(context, section, childIndex);
+      return buildItem(context, section, childIndex, index);
     }
   }
 

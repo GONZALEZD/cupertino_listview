@@ -1,5 +1,7 @@
 import 'package:cupertino_listview/internal/cupertino_listview_widget.dart';
-import 'package:example/section/console.dart';
+import 'package:example/src/console.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -26,11 +28,24 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   final _data = Section.allData();
+  ScrollController _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,37 +57,36 @@ class _MyHomePageState extends State<MyHomePage> {
         sectionBuilder: this._buildSection,
         childBuilder: this._buildItem,
         separatorBuilder: this._buildSeparator,
+        controller: _scrollController,
       ),
     );
   }
 
-  Widget _buildSeparator(BuildContext context, int section, int index) {
-    return Divider(color: Theme.of(context).primaryColor,thickness: 2.0, indent: 20.0, endIndent: 20.0,);
+  Widget _buildSeparator(BuildContext context, int section, int index, int absoluteIndex) {
+    return Divider(indent: 20.0, endIndent: 20.0);
   }
 
-  Widget _buildSection(BuildContext context, int section) {
+  Widget _buildSection(BuildContext context, int section, int absoluteIndex) {
     final style = Theme.of(context).textTheme.headline6;
     return Container(
       height: 80.0,
       alignment: Alignment.centerLeft,
       padding: EdgeInsets.only(left: 20.0),
-      color: Theme.of(context).primaryColor,
+      color: Theme.of(context).primaryColorDark,
       child: Text(_data[section].name, style: style.copyWith(color: Colors.white)),
     );
   }
 
-  Widget _buildItem(BuildContext context, int section, int index) {
+  Widget _buildItem(BuildContext context, int section, int index, int absoluteIndex) {
+    final attribute = _data[section][index];
     return Container(
-      padding: const EdgeInsets.all(12.0),
+      padding: const EdgeInsets.all(20.0),
       constraints: BoxConstraints(minHeight: 50.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
-            child: Text(_data[section][index].console),
-            width: 120.0,
-          ),
-          Expanded(child: Text(_data[section][index].attribute)),
+          SizedBox(child: Text(attribute.console), width: 120.0),
+          Expanded(child: Text(attribute.attribute)),
         ],
       ),
     );
