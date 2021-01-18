@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 class CupertinoChildListDelegate extends CupertinoListDelegate {
 
   final List<List<Widget>> children;
+
   Map<Key, int> _keysToIndex;
 
   CupertinoChildListDelegate({this.children}):

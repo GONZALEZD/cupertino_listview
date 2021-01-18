@@ -24,12 +24,8 @@ class CupertinoListBuilderDelegate extends CupertinoListDelegate {
   @override
   Widget buildItem(BuildContext context, int section, int index, int absoluteIndex) {
     if(_hasSeparator) {
-      if(index.isEven){
-        return this.childBuilder(context, section, index~/2, absoluteIndex);
-      }
-      else {
-        return this.separatorBuilder(context, section, index~/2, absoluteIndex);
-      }
+      final builder = index.isEven ? this.childBuilder : this.separatorBuilder;
+      return builder(context, section, index~/2, absoluteIndex);
     }
     else {
       return this.childBuilder(context, section, index, absoluteIndex);

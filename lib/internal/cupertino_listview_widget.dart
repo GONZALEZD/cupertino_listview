@@ -4,17 +4,39 @@ import 'package:cupertino_listview/internal/delegate/cupertino_list_delegate.dar
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+/// Display a vertical list of sections, as done by plain list on iOS :
+/// the current section remains displayed on top.
+///
+/// On contrary to [ListView] widget, it is not possible to display items :
+/// - in reverse mode
+/// - in Horizontal axis
+///
+/// These restrictions have been set to prevent bad UX design.
 class CupertinoListView extends StatefulWidget {
   final CupertinoListDelegate _delegate;
 
+  /// Same as [ListView].scrollController: "control the position to which this scroll view is scrolled".
   final ScrollController controller;
 
+  /// {@macro flutter.rendering.viewport.cacheExtent}
   final double cacheExtent;
+
+  /// Same as [ListView].clipBehavior: "ways to clip a widget's content".
   final Clip clipBehavior;
+
+  /// Same as [ListView].dragStartBehavior: "Determines the way that drag start behavior is handled".
   final DragStartBehavior dragStartBehavior;
+
+  /// Same as [ListView].physics: "How the scroll view should respond to user input".
   final ScrollPhysics physics;
+
+  /// Same as [ListView].restorationId: used "to save and restore the scroll offset of the scrollable".
   final String restorationId;
+
+  /// The amount of space by which to inset the children.
   final EdgeInsets padding;
+
+  /// Defines how the list will dismiss the keyboard automatically.
   final ScrollViewKeyboardDismissBehavior keyboardDismissBehavior;
 
   CupertinoListView._(
