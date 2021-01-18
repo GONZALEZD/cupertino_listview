@@ -1,5 +1,6 @@
-# cupertino_listview - Display a vertical list of sections and items, where the current section remains displayed on top of the list until it's pushed by the next section.
-This library tends to be the equivalent of iOS UITableView with plain sections.
+# cupertino_listview - Display a vertical list, iOS UX styled.
+This library tends to be the equivalent of iOS UITableView with plain sections, where the current section title remains on top, and pushed away by the next section title.
+
 It contains one widget: CupertinoListView, that mimics in its usage the [ListView] widget.
 
 ![](doc/cupertino_listview.gif)
