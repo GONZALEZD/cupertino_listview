@@ -40,9 +40,9 @@ CupertinoListView(
 | separatorBuilder         | Used to build separator between two children of sections. | -                       |
 | controller               | Control the position to which this scroll view is scrolled. | -                       |
 | cacheExtent              | Cache elements used to display faster and smoother the list. | -                       |
-| clipBehavior             | Same as [ListView].clipBehavior: "ways to clip a widget's content". | -                       |
-| dragStartBehavior        | Same as [ListView].dragStartBehavior: "Determines the way that drag start behavior is handled". | -                       |
+| clipBehavior             | Same as [ListView].clipBehavior: "ways to clip a widget's content". | Clip.hardEdge |
+| dragStartBehavior        | Same as [ListView].dragStartBehavior: "Determines the way that drag start behavior is handled". | DragStartBehavior.start |
 | physics                  | Same as [ListView].physics: "How the scroll view should respond to user input". | -                       |
 | restorationId            | Same as [ListView].restorationId: used "to save and restore the scroll offset of the scrollable". | -                       |
 | padding                  | The amount of space by which to inset the children. | -                       |
-| keyboardDismissBehavior  | Defines how the list will dismiss the keyboard automatically. | -                       |
+| keyboardDismissBehavior  | Defines how the list will dismiss the keyboard automatically. | ScrollViewKeyboardDismissBehavior.manual |

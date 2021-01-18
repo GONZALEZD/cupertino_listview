@@ -40,7 +40,7 @@ class CupertinoListView extends StatefulWidget {
   final ScrollViewKeyboardDismissBehavior keyboardDismissBehavior;
 
   CupertinoListView._(
-      {CupertinoListDelegate delegate,
+      {@required CupertinoListDelegate delegate,
       this.controller,
       this.cacheExtent,
       this.clipBehavior,
@@ -49,14 +49,15 @@ class CupertinoListView extends StatefulWidget {
       this.restorationId,
       this.physics,
       this.keyboardDismissBehavior})
-      : _delegate = delegate;
+      : _delegate = delegate,
+  assert(delegate != null);
 
   factory CupertinoListView.builder({
-    int sectionCount,
-    SectionBuilder sectionBuilder,
-    SectionChildBuilder childBuilder,
-    SectionItemCount itemInSectionCount,
-    ChildSeparatorBuilder separatorBuilder,
+    @required int sectionCount,
+    @required SectionBuilder sectionBuilder,
+    @required SectionChildBuilder childBuilder,
+    @required SectionItemCount itemInSectionCount,
+    @required ChildSeparatorBuilder separatorBuilder,
     ScrollController controller,
     double cacheExtent,
     Clip clipBehavior = Clip.hardEdge,
@@ -67,6 +68,12 @@ class CupertinoListView extends StatefulWidget {
     ScrollViewKeyboardDismissBehavior keyboardDismissBehavior =
         ScrollViewKeyboardDismissBehavior.manual,
   }) {
+    assert(sectionBuilder != null);
+    assert(childBuilder != null);
+    assert(itemInSectionCount != null);
+    assert(separatorBuilder != null);
+    assert(sectionCount != null && sectionCount > 0);
+
     final delegate = CupertinoListBuilderDelegate(
       sectionCount: sectionCount,
       childBuilder: childBuilder,
@@ -101,6 +108,11 @@ class CupertinoListView extends StatefulWidget {
     ScrollViewKeyboardDismissBehavior keyboardDismissBehavior =
         ScrollViewKeyboardDismissBehavior.manual,
   }) {
+    assert(children != null && children.isNotEmpty);
+    children.forEach((section) {
+      assert(section != null && section.length > 1);
+    });
+
     final delegate = CupertinoChildListDelegate(children: children);
     delegate.setup();
     return CupertinoListView._(
@@ -143,7 +155,6 @@ class _CupertinoListViewState extends State<CupertinoListView> {
     }
     this.controller = this.widget.controller ?? ScrollController();
     this.controller.addListener(_onScrollChange);
-    print(this.controller.runtimeType);
     WidgetsBinding.instance.addPostFrameCallback(_refreshFirstTime);
   }
 
