@@ -1,5 +1,5 @@
-import 'package:cupertino_listview/internal/cupertino_listview_widget.dart';
-import 'package:example/src/console.dart';
+import 'package:cupertino_listview/cupertino_listview.dart';
+import 'src/console.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 

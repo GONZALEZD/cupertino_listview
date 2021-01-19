@@ -1,5 +1,5 @@
-import 'package:cupertino_listview/internal/delegate/cupertino_list_delegate.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'cupertino_list_delegate.dart';
+import 'package:flutter/cupertino.dart';
 
 class CupertinoChildListDelegate extends CupertinoListDelegate {
 

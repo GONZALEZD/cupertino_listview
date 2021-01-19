@@ -1,7 +1,5 @@
-import 'package:cupertino_listview/internal/delegate/cupertino_list_delegate.dart';
+import 'cupertino_list_delegate.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/sliver.dart';
 
 /// Section title builder
 typedef SectionBuilder = Widget Function(BuildContext context, int section, int absoluteIndex);

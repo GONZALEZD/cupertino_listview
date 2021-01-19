@@ -1,6 +1,6 @@
-import 'package:cupertino_listview/internal/delegate/cupertino_builder_delegate.dart';
-import 'package:cupertino_listview/internal/delegate/cupertino_child_list_delegate.dart';
-import 'package:cupertino_listview/internal/delegate/cupertino_list_delegate.dart';
+import 'package:cupertino_listview/src/delegate/cupertino_builder_delegate.dart';
+import 'package:cupertino_listview/src/delegate/cupertino_child_list_delegate.dart';
+import 'package:cupertino_listview/src/delegate/cupertino_list_delegate.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
