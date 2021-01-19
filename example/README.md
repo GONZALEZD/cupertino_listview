@@ -1,6 +1,6 @@
 # example
 
-A new Flutter project.
+A new Flutter project that show one usage of the CupertinoListView widget.
 
 ## Getting Started
 

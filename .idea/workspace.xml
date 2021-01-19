@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc6eb518-8c0a-4360-a579-3d0a7f85ee3a" name="Default Changelist" comment="" />
+    <list default="true" id="cc6eb518-8c0a-4360-a579-3d0a7f85ee3a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/analysis_options.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/analysis_options.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/example/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/src/console.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/src/console.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/test/widget_test.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/internal/cupertino_listview_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/internal/cupertino_listview_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/internal/delegate/cupertino_builder_delegate.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/internal/delegate/cupertino_builder_delegate.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/internal/delegate/cupertino_child_list_delegate.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/internal/delegate/cupertino_child_list_delegate.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/internal/delegate/cupertino_list_delegate.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/internal/delegate/cupertino_list_delegate.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/cupertino_listview_test.dart" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -97,10 +113,10 @@
       <screen x="0" y="25" width="1440" height="813" />
     </state>
     <state x="250" y="186" width="710" height="490" key="find.popup/0.25.1440.813@0.25.1440.813" timestamp="1610998789197" />
-    <state width="460" height="114" key="javadoc.popup.new" timestamp="1610998634789">
+    <state width="460" height="114" key="javadoc.popup.new" timestamp="1611047827531">
       <screen x="0" y="25" width="1440" height="813" />
     </state>
-    <state width="460" height="114" key="javadoc.popup.new/0.25.1440.813@0.25.1440.813" timestamp="1610998634789" />
+    <state width="460" height="114" key="javadoc.popup.new/0.25.1440.813@0.25.1440.813" timestamp="1611047827531" />
     <state x="222" y="162" width="670" height="676" key="search.everywhere.popup" timestamp="1610640092794">
       <screen x="0" y="25" width="1440" height="813" />
     </state>

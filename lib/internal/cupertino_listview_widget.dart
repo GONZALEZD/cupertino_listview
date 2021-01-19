@@ -96,11 +96,10 @@ class CupertinoListView extends StatefulWidget {
   }
 
   factory CupertinoListView({
-    List<List<Widget>> children,
+    @required List<List<Widget>> children,
     ScrollController controller,
     double cacheExtent,
     Clip clipBehavior = Clip.hardEdge,
-    bool primary,
     DragStartBehavior dragStartBehavior = DragStartBehavior.start,
     ScrollPhysics physics,
     String restorationId,
@@ -133,28 +132,28 @@ class CupertinoListView extends StatefulWidget {
 }
 
 class _CupertinoListViewState extends State<CupertinoListView> {
-  ScrollController controller;
+  ScrollController _controller;
 
   _CupertinoListViewState();
 
   Widget _header;
-  GlobalKey listKey;
+  GlobalKey _listKey;
 
   @override
   void initState() {
     super.initState();
     _resetController();
     _header = SizedBox();
-    listKey = GlobalKey(debugLabel: "_CupertinoListViewState::listView widget key");
+    _listKey = GlobalKey(debugLabel: '_CupertinoListViewState::listView widget key');
   }
 
   void _resetController() {
-    if (this.controller != null) {
-      this.controller.removeListener(_onScrollChange);
-      this.controller.dispose();
+    if (_controller != null) {
+      _controller.removeListener(_onScrollChange);
+      _controller.dispose();
     }
-    this.controller = this.widget.controller ?? ScrollController();
-    this.controller.addListener(_onScrollChange);
+    _controller = widget.controller ?? ScrollController();
+    _controller.addListener(_onScrollChange);
     WidgetsBinding.instance.addPostFrameCallback(_refreshFirstTime);
   }
 
@@ -165,50 +164,50 @@ class _CupertinoListViewState extends State<CupertinoListView> {
   @override
   void didUpdateWidget(covariant CupertinoListView oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (this.widget.controller != oldWidget.controller) {
+    if (widget.controller != oldWidget.controller) {
       _resetController();
     }
   }
 
   @override
   void dispose() {
-    this.controller.removeListener(_onScrollChange);
-    this.controller.dispose();
+    _controller.removeListener(_onScrollChange);
+    _controller.dispose();
     super.dispose();
   }
 
   void _onScrollChange() {
     setState(() {
-      _header = this.widget._delegate.buildSectionOverlay(
-        listKey,
+      _header = widget._delegate.buildSectionOverlay(
+        _listKey,
         context,
-        this.controller.offset,
+        _controller.offset,
       );
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    Widget widget = Stack(
+    Widget child = Stack(
       children: [
         _HookableListView(
-          listKey: listKey,
-          controller: controller,
-          delegate: this.widget._delegate,
-          cacheExtent: this.widget.cacheExtent,
-          clipBehavior: this.widget.clipBehavior,
-          dragStartBehavior: this.widget.dragStartBehavior,
-          keyboardDismissBehavior: this.widget.keyboardDismissBehavior,
-          physics: this.widget.physics,
-          restorationId: this.widget.restorationId,
+          listKey: _listKey,
+          controller: _controller,
+          delegate: widget._delegate,
+          cacheExtent: widget.cacheExtent,
+          clipBehavior: widget.clipBehavior,
+          dragStartBehavior: widget.dragStartBehavior,
+          keyboardDismissBehavior: widget.keyboardDismissBehavior,
+          physics: widget.physics,
+          restorationId: widget.restorationId,
         ),
         Positioned(child: _header),
       ],
     );
-    if(this.widget.padding != null) {
-      widget = Padding(padding: this.widget.padding, child: widget);
+    if(widget.padding != null) {
+      child = Padding(padding: widget.padding, child: child);
     }
-    return widget;
+    return child;
   }
 }
 
@@ -217,9 +216,9 @@ class _HookableListView extends BoxScrollView {
   final CupertinoListDelegate delegate;
 
   _HookableListView({
-    this.listKey,
-    this.delegate,
-    ScrollController controller,
+    @required this.listKey,
+    @required this.delegate,
+    @required ScrollController controller,
     double cacheExtent,
     Clip clipBehavior = Clip.hardEdge,
     DragStartBehavior dragStartBehavior = DragStartBehavior.start,
@@ -240,6 +239,6 @@ class _HookableListView extends BoxScrollView {
 
   @override
   Widget buildChildLayout(BuildContext context) {
-    return SliverList(delegate: this.delegate, key: this.listKey);
+    return SliverList(delegate: delegate, key: listKey);
   }
 }

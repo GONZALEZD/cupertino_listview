@@ -5,7 +5,7 @@ class CupertinoChildListDelegate extends CupertinoListDelegate {
 
   final List<List<Widget>> children;
 
-  Map<Key, int> _keysToIndex;
+  final Map<Key, int> _keysToIndex;
 
   CupertinoChildListDelegate({this.children}):
       _keysToIndex = {},
@@ -14,7 +14,7 @@ class CupertinoChildListDelegate extends CupertinoListDelegate {
   @override
   void setup() {
     super.setup();
-    List<Widget> flatList = children.fold([], (list, section) => list + section);
+    final flatList = children.fold([], (list, section) => list + section);
     Widget child;
     for(var i = 0; i<flatList.length; i++) {
       child = flatList[i];

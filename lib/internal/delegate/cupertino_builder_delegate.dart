@@ -22,7 +22,7 @@ class CupertinoListBuilderDelegate extends CupertinoListDelegate {
   final SectionItemCount itemInSectionCount;
   final ChildSeparatorBuilder separatorBuilder;
 
-  bool get _hasSeparator => this.separatorBuilder != null;
+  bool get _hasSeparator => separatorBuilder != null;
 
   CupertinoListBuilderDelegate(
       {int sectionCount, this.sectionBuilder, this.childBuilder, this.itemInSectionCount, this.separatorBuilder})
@@ -31,29 +31,29 @@ class CupertinoListBuilderDelegate extends CupertinoListDelegate {
   @override
   Widget buildItem(BuildContext context, int section, int index, int absoluteIndex) {
     if(_hasSeparator) {
-      final builder = index.isEven ? this.childBuilder : this.separatorBuilder;
+      final builder = index.isEven ? childBuilder : separatorBuilder;
       return builder(context, section, index~/2, absoluteIndex);
     }
     else {
-      return this.childBuilder(context, section, index, absoluteIndex);
+      return childBuilder(context, section, index, absoluteIndex);
     }
   }
 
   @override
-  Widget buildSection(BuildContext context, int section, int absoluteIndex) => this.sectionBuilder(context, section, absoluteIndex);
+  Widget buildSection(BuildContext context, int section, int absoluteIndex) => sectionBuilder(context, section, absoluteIndex);
 
   @override
   int itemCount({int section}) {
-    final childCount = this.itemInSectionCount(section);
+    final childCount = itemInSectionCount(section);
     return _hasSeparator ? childCount*2-1 : childCount;
   }
 
   @override
   bool shouldRebuild(covariant SliverChildDelegate oldDelegate) {
     if (oldDelegate is CupertinoListBuilderDelegate) {
-      return this.sectionBuilder != oldDelegate.sectionBuilder ||
-    this.childBuilder != oldDelegate.childBuilder ||
-    this.itemInSectionCount != oldDelegate.itemInSectionCount ||
+      return sectionBuilder != oldDelegate.sectionBuilder ||
+    childBuilder != oldDelegate.childBuilder ||
+    itemInSectionCount != oldDelegate.itemInSectionCount ||
     super.shouldRebuild(oldDelegate);
     }
     return true;

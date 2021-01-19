@@ -64,7 +64,7 @@ abstract class CupertinoListDelegate extends SliverChildDelegate {
       return buildSection(context, childSection, _sectionStarts[childSection]);
     }
 
-    double offset = listRender.childScrollOffset(nextSectionBox) - scrollOffset;
+    var offset = listRender.childScrollOffset(nextSectionBox) - scrollOffset;
     if(offset < 0.0) {
       offset = double.infinity;
     }
@@ -126,7 +126,7 @@ abstract class CupertinoListDelegate extends SliverChildDelegate {
   @override
   bool shouldRebuild(SliverChildDelegate oldDelegate) {
     if (oldDelegate is CupertinoListDelegate) {
-      return this.sectionCount != oldDelegate.sectionCount ||
+      return sectionCount != oldDelegate.sectionCount ||
           _sectionStarts != oldDelegate._sectionStarts ||
           _estimatedItemCount != oldDelegate._estimatedItemCount;
     }

@@ -1,7 +1,6 @@
 import 'package:cupertino_listview/internal/cupertino_listview_widget.dart';
 import 'package:example/src/console.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -54,9 +53,9 @@ class _MyHomePageState extends State<MyHomePage> {
       body: CupertinoListView.builder(
         sectionCount: _data.length,
         itemInSectionCount: (section) => _data[section].itemCount,
-        sectionBuilder: this._buildSection,
-        childBuilder: this._buildItem,
-        separatorBuilder: this._buildSeparator,
+        sectionBuilder: _buildSection,
+        childBuilder: _buildItem,
+        separatorBuilder: _buildSeparator,
         controller: _scrollController,
       ),
     );
