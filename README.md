@@ -1,4 +1,4 @@
-# cupertino_listview - Display a vertical list, iOS UX styled.
+# cupertino_listview - Display a vertical list, respecting iOS UX design.
 This library tends to be the equivalent of iOS UITableView with plain sections, where the current section title remains on top, and pushed away by the next section title.
 
 It contains one widget: CupertinoListView, that mimics in its usage the [ListView] widget.
@@ -9,10 +9,11 @@ Therefore ou have two ways to build it:
 - "dynamic" build of children, using [CupertinoListView.builder].
 - "static" children, using [CupertinoListView] constructor.
 
+### Examples
 ```dart
 CupertinoListView.builder(
     sectionCount: _data.length,
-    itemInSectionCount: (section) => _data[section].itemCount,
+    itemInSectionCount: (section) => _data[section].items.length,
     sectionBuilder: (context, section, _) => Text(_data[section].name),
     childBuilder: (context, section, index, _) => Text(_data[section].items[index]),
     separatorBuilder: (_, __, ___, ____) => Divider(indent: 20.0, endIndent: 20.0),
@@ -23,7 +24,10 @@ CupertinoListView.builder(
 ```dart
 CupertinoListView(
     children: _data.fold([], (list, section) {
-        return [_data[section].name,  ..._data[section].items];
+        return [
+          Text(_data[section].name),
+          ..._data[section].items.map((item) => Text(item)).toList(),
+        ];
     }),
     padding: const EdgeInsets.all(4.0),
 );
