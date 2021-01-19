@@ -3,17 +3,15 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 
-
 /// Define how to build child of CupertinoListView.
 abstract class CupertinoListDelegate extends SliverChildDelegate {
-  
   /// Number of sections This delegate will layout
   final int sectionCount;
-  
+
   ///Absolute indexes of each section
   List<int> _sectionStarts;
-  
-  /// Estimation of the Number of items. 
+
+  /// Estimation of the Number of items.
   int _estimatedItemCount;
 
   CupertinoListDelegate({this.sectionCount}) : super();
@@ -21,12 +19,14 @@ abstract class CupertinoListDelegate extends SliverChildDelegate {
   /// Retrieve the number of items for a given section.
   int itemCount({int section});
 
-  int _section(int index) => _sectionStarts.lastIndexWhere((element) => element <= index);
+  int _section(int index) =>
+      _sectionStarts.lastIndexWhere((element) => element <= index);
 
   /// Compute all data needed to build section and items widgets.
   /// Must be called before building widgets.
   void setup() {
-    final elementsPerSection = List.generate(sectionCount, (index) => itemCount(section: index));
+    final elementsPerSection =
+        List.generate(sectionCount, (index) => itemCount(section: index));
     _sectionStarts = List<int>.filled(sectionCount, 0);
     for (var i = 1; i < sectionCount; i++) {
       _sectionStarts[i] = 1 + _sectionStarts[i - 1] + elementsPerSection[i - 1];
@@ -36,7 +36,8 @@ abstract class CupertinoListDelegate extends SliverChildDelegate {
 
   /// Build an item defined by its [section], its local [index].
   /// [absoluteIndex] define the index in the entire list of items.
-  Widget buildItem(BuildContext context, int section, int index, int absoluteIndex);
+  Widget buildItem(
+      BuildContext context, int section, int index, int absoluteIndex);
 
   /// Build a section header defined by its [section] index.
   /// [absoluteIndex] define the index in the entire list of items.
@@ -45,27 +46,28 @@ abstract class CupertinoListDelegate extends SliverChildDelegate {
   /// Build the overlay displaying the current section.
   /// Depending of the scroll offset, the retrieved widget may be truncated,
   /// in order to stick with the next section widget.
-  Widget buildSectionOverlay(GlobalKey listKey, BuildContext context, double scrollOffset) {
-
-    final listRender = listKey.currentContext.findRenderObject() as RenderSliverMultiBoxAdaptor;
+  Widget buildSectionOverlay(
+      GlobalKey listKey, BuildContext context, double scrollOffset) {
+    final listRender = listKey.currentContext.findRenderObject()
+        as RenderSliverMultiBoxAdaptor;
 
     final firstChild = _findFirstVisibleObject(listRender, scrollOffset);
-    if(firstChild == null) {
+    if (firstChild == null) {
       return SizedBox();
     }
     final childData = firstChild.parentData as SliverMultiBoxAdaptorParentData;
     final childSection = max(0, _section(childData.index));
-    if(childData.index == 0 && scrollOffset <= 0.0) {
+    if (childData.index == 0 && scrollOffset <= 0.0) {
       return SizedBox();
     }
 
-    final nextSectionBox = _findSection(listRender, childSection+1);
-    if(nextSectionBox == null) {
+    final nextSectionBox = _findSection(listRender, childSection + 1);
+    if (nextSectionBox == null) {
       return buildSection(context, childSection, _sectionStarts[childSection]);
     }
 
     var offset = listRender.childScrollOffset(nextSectionBox) - scrollOffset;
-    if(offset < 0.0) {
+    if (offset < 0.0) {
       offset = double.infinity;
     }
     final sectionHeight = nextSectionBox.paintBounds.height;
@@ -81,24 +83,26 @@ abstract class CupertinoListDelegate extends SliverChildDelegate {
     );
   }
 
-  RenderObject _findFirstVisibleObject(RenderSliverMultiBoxAdaptor listRenderObject, double scrollOffset) {
+  RenderObject _findFirstVisibleObject(
+      RenderSliverMultiBoxAdaptor listRenderObject, double scrollOffset) {
     RenderObject sectionRender;
     SliverMultiBoxAdaptorParentData childData;
     listRenderObject.visitChildren((child) {
       childData = child.parentData as SliverMultiBoxAdaptorParentData;
-      if(childData.layoutOffset <= scrollOffset) {
+      if (childData.layoutOffset <= scrollOffset) {
         sectionRender = child;
       }
     });
     return sectionRender;
   }
 
-  RenderObject _findSection(RenderSliverMultiBoxAdaptor listRenderObject, int section) {
+  RenderObject _findSection(
+      RenderSliverMultiBoxAdaptor listRenderObject, int section) {
     RenderObject sectionRender;
     SliverMultiBoxAdaptorParentData childData;
     listRenderObject.visitChildren((child) {
       childData = child.parentData as SliverMultiBoxAdaptorParentData;
-      if(_section(childData.index) == section && sectionRender == null) {
+      if (_section(childData.index) == section && sectionRender == null) {
         sectionRender = child;
       }
     });

@@ -50,7 +50,7 @@ class CupertinoListView extends StatefulWidget {
       this.physics,
       this.keyboardDismissBehavior})
       : _delegate = delegate,
-  assert(delegate != null);
+        assert(delegate != null);
 
   factory CupertinoListView.builder({
     @required int sectionCount,
@@ -144,7 +144,8 @@ class _CupertinoListViewState extends State<CupertinoListView> {
     super.initState();
     _resetController();
     _header = SizedBox();
-    _listKey = GlobalKey(debugLabel: '_CupertinoListViewState::listView widget key');
+    _listKey =
+        GlobalKey(debugLabel: '_CupertinoListViewState::listView widget key');
   }
 
   void _resetController() {
@@ -204,7 +205,7 @@ class _CupertinoListViewState extends State<CupertinoListView> {
         Positioned(child: _header),
       ],
     );
-    if(widget.padding != null) {
+    if (widget.padding != null) {
       child = Padding(padding: widget.padding, child: child);
     }
     return child;

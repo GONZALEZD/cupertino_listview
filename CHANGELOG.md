@@ -1,3 +1,7 @@
+## [1.0.2] Dartfmt format
+
+* Reformat files using "dartfmt -w" command.
+
 ## [1.0.1] Take into account pub package analysis
 
 * Remove private imports from other packages.

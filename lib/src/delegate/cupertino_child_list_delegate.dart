@@ -2,13 +2,12 @@ import 'cupertino_list_delegate.dart';
 import 'package:flutter/cupertino.dart';
 
 class CupertinoChildListDelegate extends CupertinoListDelegate {
-
   final List<List<Widget>> children;
 
   final Map<Key, int> _keysToIndex;
 
-  CupertinoChildListDelegate({this.children}):
-      _keysToIndex = {},
+  CupertinoChildListDelegate({this.children})
+      : _keysToIndex = {},
         super(sectionCount: children.length);
 
   @override
@@ -16,9 +15,9 @@ class CupertinoChildListDelegate extends CupertinoListDelegate {
     super.setup();
     final flatList = children.fold([], (list, section) => list + section);
     Widget child;
-    for(var i = 0; i<flatList.length; i++) {
+    for (var i = 0; i < flatList.length; i++) {
       child = flatList[i];
-      if(child.key != null) {
+      if (child.key != null) {
         _keysToIndex[child.key] = i;
       }
     }
@@ -30,8 +29,9 @@ class CupertinoChildListDelegate extends CupertinoListDelegate {
   }
 
   @override
-  Widget buildItem(BuildContext context, int section, int index, int absoluteIndex) {
-    return children[section][index+1];
+  Widget buildItem(
+      BuildContext context, int section, int index, int absoluteIndex) {
+    return children[section][index + 1];
   }
 
   @override
@@ -41,6 +41,6 @@ class CupertinoChildListDelegate extends CupertinoListDelegate {
 
   @override
   int itemCount({int section}) {
-    return children[section].length-1;
+    return children[section].length - 1;
   }
 }
