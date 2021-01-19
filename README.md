@@ -1,4 +1,4 @@
-# cupertino_listview - Display a vertical list of sections (group of items), respecting iOS UX design, where the current section title remains displayed on top (until the next one push it away).
+# cupertino_listview - Display a vertical list of sections (group of items), respecting iOS UX design.
 This library tends to be the equivalent of iOS UITableView with plain sections.
 
 It contains one widget: CupertinoListView, that mimics in its usage the [ListView] widget.

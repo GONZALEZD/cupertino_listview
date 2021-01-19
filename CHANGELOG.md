@@ -1,3 +1,8 @@
+## [1.0.3] Fix CupertinoListView API
+
+* For CupertinoListView.builder factory, make separatorBuilder optional.
+
+
 ## [1.0.2] Dartfmt format
 
 * Reformat files using "dartfmt -w" command.

@@ -57,7 +57,7 @@ class CupertinoListView extends StatefulWidget {
     @required SectionBuilder sectionBuilder,
     @required SectionChildBuilder childBuilder,
     @required SectionItemCount itemInSectionCount,
-    @required ChildSeparatorBuilder separatorBuilder,
+    ChildSeparatorBuilder separatorBuilder,
     ScrollController controller,
     double cacheExtent,
     Clip clipBehavior = Clip.hardEdge,
@@ -71,7 +71,6 @@ class CupertinoListView extends StatefulWidget {
     assert(sectionBuilder != null);
     assert(childBuilder != null);
     assert(itemInSectionCount != null);
-    assert(separatorBuilder != null);
     assert(sectionCount != null && sectionCount > 0);
 
     final delegate = CupertinoListBuilderDelegate(
