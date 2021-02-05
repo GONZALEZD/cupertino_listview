@@ -14,9 +14,9 @@ Therefore ou have two ways to build it:
 CupertinoListView.builder(
     sectionCount: _data.length,
     itemInSectionCount: (section) => _data[section].items.length,
-    sectionBuilder: (context, section, _) => Text(_data[section].name),
-    childBuilder: (context, section, index, _) => Text(_data[section].items[index]),
-    separatorBuilder: (_, __, ___, ____) => Divider(indent: 20.0, endIndent: 20.0),
+    sectionBuilder: (context, sectionPath, _) => Text(_data[sectionPath.section].name),
+    childBuilder: (context, indexPath) => Text(_data[indexPath.section].items[indexPath.child]),
+    separatorBuilder: (context, indexPath) => Divider(indent: 20.0),
     controller: _scrollController,
 );
 ```
@@ -33,11 +33,22 @@ CupertinoListView(
 );
 ```
 
+### another example
+You can also use this library in combination to scroll_to_index.
+
+The complete explanation is available here:
+https://medium.com/flutter-community/flutter-ios-styled-listview-cc21d8574dd5
+
+
+![](doc/cupertino_listview2.gif)
+
+
 ### CupertinoListView properties
 
 | Parameter            | Description                                       | Default value  |
 | -------------------- | ------------------------------------------------- | -------------- |
 | children             | List of sections. A section is a list with the section title as its first element, followed by section's items. | -                       |
+| floatingSectionBuilder | Optional builder used to create floating section widget. This builder is intended to differentiate the section widget from list and the floating one. | -                       | 
 | sectionCount         | Number of sections. | -                       |
 | itemInSectionCount   | Retrieve the number of items of sections. | -                       |
 | sectionBuilder       | Used to build the section title. | -                       |

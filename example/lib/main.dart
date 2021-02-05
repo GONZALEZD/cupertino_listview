@@ -61,23 +61,23 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Widget _buildSeparator(BuildContext context, int section, int index, int absoluteIndex) {
+  Widget _buildSeparator(BuildContext context, IndexPath index) {
     return Divider(indent: 20.0, endIndent: 20.0);
   }
 
-  Widget _buildSection(BuildContext context, int section, int absoluteIndex) {
+  Widget _buildSection(BuildContext context, SectionPath index, bool isFloating) {
     final style = Theme.of(context).textTheme.headline6;
     return Container(
       height: 80.0,
       alignment: Alignment.centerLeft,
       padding: EdgeInsets.only(left: 20.0),
       color: Theme.of(context).primaryColorDark,
-      child: Text(_data[section].name, style: style.copyWith(color: Colors.white)),
+      child: Text(_data[index.section].name, style: style.copyWith(color: Colors.white)),
     );
   }
 
-  Widget _buildItem(BuildContext context, int section, int index, int absoluteIndex) {
-    final attribute = _data[section][index];
+  Widget _buildItem(BuildContext context, IndexPath index) {
+    final attribute = _data[index.section][index.child];
     return Container(
       padding: const EdgeInsets.all(20.0),
       constraints: BoxConstraints(minHeight: 50.0),

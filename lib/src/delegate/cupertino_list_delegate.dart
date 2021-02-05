@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
+import 'package:cupertino_listview/src/widget_builder.dart';
 
 /// Define how to build child of CupertinoListView.
 abstract class CupertinoListDelegate extends SliverChildDelegate {
@@ -36,12 +37,11 @@ abstract class CupertinoListDelegate extends SliverChildDelegate {
 
   /// Build an item defined by its [section], its local [index].
   /// [absoluteIndex] define the index in the entire list of items.
-  Widget buildItem(
-      BuildContext context, int section, int index, int absoluteIndex);
+  Widget buildItem(BuildContext context, IndexPath index);
 
   /// Build a section header defined by its [section] index.
   /// [absoluteIndex] define the index in the entire list of items.
-  Widget buildSection(BuildContext context, int section, int absoluteIndex);
+  Widget buildSection(BuildContext context, SectionPath index, bool isFloating);
 
   /// Build the overlay displaying the current section.
   /// Depending of the scroll offset, the retrieved widget may be truncated,
@@ -62,8 +62,10 @@ abstract class CupertinoListDelegate extends SliverChildDelegate {
     }
 
     final nextSectionBox = _findSection(listRender, childSection + 1);
+    final indexPath = SectionPath(
+        section: childSection, absoluteIndex: _sectionStarts[childSection]);
     if (nextSectionBox == null) {
-      return buildSection(context, childSection, _sectionStarts[childSection]);
+      return buildSection(context, indexPath, true);
     }
 
     var offset = listRender.childScrollOffset(nextSectionBox) - scrollOffset;
@@ -77,7 +79,7 @@ abstract class CupertinoListDelegate extends SliverChildDelegate {
         child: OverflowBox(
           maxHeight: sectionHeight,
           alignment: Alignment.bottomCenter,
-          child: buildSection(context, childSection, null),
+          child: buildSection(context, indexPath, true),
         ),
       ),
     );
@@ -116,11 +118,21 @@ abstract class CupertinoListDelegate extends SliverChildDelegate {
     }
     if (_sectionStarts.contains(index)) {
       final section = _sectionStarts.indexOf(index);
-      return buildSection(context, section, index);
+      return buildSection(
+        context,
+        SectionPath(section: section, absoluteIndex: index),
+        false,
+      );
     } else {
       var section = _sectionStarts.lastIndexWhere((element) => element < index);
       final childIndex = index - _sectionStarts[section] - 1;
-      return buildItem(context, section, childIndex, index);
+      return buildItem(
+          context,
+          IndexPath(
+            section: section,
+            child: childIndex,
+            absoluteIndex: index,
+          ));
     }
   }
 

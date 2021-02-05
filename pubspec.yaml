@@ -1,6 +1,6 @@
 name: cupertino_listview
 description: Display a vertical list of sections (group of items), respecting iOS UX design, where the current section title remains displayed on top (until the next one push it away).
-version: 1.0.3
+version: 1.0.5
 repository: https://github.com/GONZALEZD/cupertino_listview.git
 
 environment:

@@ -1,6 +1,7 @@
 import 'package:cupertino_listview/src/delegate/cupertino_builder_delegate.dart';
 import 'package:cupertino_listview/src/delegate/cupertino_child_list_delegate.dart';
 import 'package:cupertino_listview/src/delegate/cupertino_list_delegate.dart';
+import 'package:cupertino_listview/src/widget_builder.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -52,6 +53,22 @@ class CupertinoListView extends StatefulWidget {
       : _delegate = delegate,
         assert(delegate != null);
 
+  /// Creates a scrollable, linear array of widgets that are created on demand,
+  /// defined by sections.
+  /// A section is a widget describing a finite group of children.
+  ///
+  /// To define these section, the [CupertinoListView] first retrieve the number
+  /// of sections using [sectionCount] input parameter.
+  /// Then the widget will call [itemInSectionCount] to define
+  /// the number of children each section has.
+  ///
+  /// Added to that, the [CupertinoListView] display the current section as
+  /// a floating widget, that will be pushed away by the next section title,
+  /// as iOS UITableView does.
+  ///
+  /// This constructor is appropriate for list views with a large (or infinite)
+  /// number of children because the builder is called only for those children
+  /// that are actually visible.
   factory CupertinoListView.builder({
     @required int sectionCount,
     @required SectionBuilder sectionBuilder,
@@ -94,6 +111,19 @@ class CupertinoListView extends StatefulWidget {
     );
   }
 
+  /// Creates a scrollable, linear array of widgets from an explicit [List]
+  /// of sections. Each section is a list containing
+  /// the section title widget, as first element, followed by its children.
+  ///
+  /// The floating section title is built using [floatingSectionBuilder] widget
+  /// builder, or through the list of [children].
+  /// It's intended to differentiate the section widget inside the [Scrollable]
+  /// list from the floating section widget.
+  ///
+  /// This constructor is appropriate for list views with a small number of
+  /// children because constructing the [List] requires doing work for every
+  /// child that could possibly be displayed in the list view instead of just
+  /// those children that are actually visible.
   factory CupertinoListView({
     @required List<List<Widget>> children,
     ScrollController controller,
@@ -105,13 +135,17 @@ class CupertinoListView extends StatefulWidget {
     EdgeInsets padding,
     ScrollViewKeyboardDismissBehavior keyboardDismissBehavior =
         ScrollViewKeyboardDismissBehavior.manual,
+    SectionBuilder floatingSectionBuilder,
   }) {
     assert(children != null && children.isNotEmpty);
     children.forEach((section) {
       assert(section != null && section.length > 1);
     });
 
-    final delegate = CupertinoChildListDelegate(children: children);
+    final delegate = CupertinoChildListDelegate(
+      children: children,
+      floatingSectionBuilder: floatingSectionBuilder,
+    );
     delegate.setup();
     return CupertinoListView._(
       delegate: delegate,
@@ -132,6 +166,7 @@ class CupertinoListView extends StatefulWidget {
 
 class _CupertinoListViewState extends State<CupertinoListView> {
   ScrollController _controller;
+  bool _isMyController;
 
   _CupertinoListViewState();
 
@@ -141,6 +176,7 @@ class _CupertinoListViewState extends State<CupertinoListView> {
   @override
   void initState() {
     super.initState();
+    _isMyController = false;
     _resetController();
     _header = SizedBox();
     _listKey =
@@ -148,11 +184,12 @@ class _CupertinoListViewState extends State<CupertinoListView> {
   }
 
   void _resetController() {
-    if (_controller != null) {
+    if (_controller != null && _isMyController) {
       _controller.removeListener(_onScrollChange);
       _controller.dispose();
     }
     _controller = widget.controller ?? ScrollController();
+    _isMyController = widget.controller == null;
     _controller.addListener(_onScrollChange);
     WidgetsBinding.instance.addPostFrameCallback(_refreshFirstTime);
   }
@@ -172,7 +209,9 @@ class _CupertinoListViewState extends State<CupertinoListView> {
   @override
   void dispose() {
     _controller.removeListener(_onScrollChange);
-    _controller.dispose();
+    if (_isMyController) {
+      _controller.dispose();
+    }
     super.dispose();
   }
 

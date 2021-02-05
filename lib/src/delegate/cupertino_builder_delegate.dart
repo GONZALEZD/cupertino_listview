@@ -1,20 +1,6 @@
 import 'cupertino_list_delegate.dart';
 import 'package:flutter/cupertino.dart';
-
-/// Section title builder
-typedef SectionBuilder = Widget Function(
-    BuildContext context, int section, int absoluteIndex);
-
-/// Section children builder
-typedef SectionChildBuilder = Widget Function(
-    BuildContext context, int section, int element, int absoluteIndex);
-
-/// Separator Builder, used between two section children
-typedef ChildSeparatorBuilder = Widget Function(
-    BuildContext context, int section, int element, int absoluteIndex);
-
-/// Retrieve the number of items of a given section
-typedef SectionItemCount = int Function(int section);
+import 'package:cupertino_listview/src/widget_builder.dart';
 
 class CupertinoListBuilderDelegate extends CupertinoListDelegate {
   final SectionBuilder sectionBuilder;
@@ -33,19 +19,19 @@ class CupertinoListBuilderDelegate extends CupertinoListDelegate {
       : super(sectionCount: sectionCount);
 
   @override
-  Widget buildItem(
-      BuildContext context, int section, int index, int absoluteIndex) {
+  Widget buildItem(BuildContext context, IndexPath index) {
     if (_hasSeparator) {
-      final builder = index.isEven ? childBuilder : separatorBuilder;
-      return builder(context, section, index ~/ 2, absoluteIndex);
+      final builder = index.child.isEven ? childBuilder : separatorBuilder;
+      return builder(context, index.copyWith(child: index.child ~/ 2));
     } else {
-      return childBuilder(context, section, index, absoluteIndex);
+      return childBuilder(context, index);
     }
   }
 
   @override
-  Widget buildSection(BuildContext context, int section, int absoluteIndex) =>
-      sectionBuilder(context, section, absoluteIndex);
+  Widget buildSection(
+          BuildContext context, SectionPath index, bool isAbsolute) =>
+      sectionBuilder(context, index, isAbsolute);
 
   @override
   int itemCount({int section}) {

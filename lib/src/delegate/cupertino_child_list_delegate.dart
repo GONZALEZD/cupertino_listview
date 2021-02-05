@@ -1,12 +1,15 @@
 import 'cupertino_list_delegate.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:cupertino_listview/src/widget_builder.dart';
 
 class CupertinoChildListDelegate extends CupertinoListDelegate {
   final List<List<Widget>> children;
 
+  final SectionBuilder floatingSectionBuilder;
+
   final Map<Key, int> _keysToIndex;
 
-  CupertinoChildListDelegate({this.children})
+  CupertinoChildListDelegate({this.children, this.floatingSectionBuilder})
       : _keysToIndex = {},
         super(sectionCount: children.length);
 
@@ -29,14 +32,17 @@ class CupertinoChildListDelegate extends CupertinoListDelegate {
   }
 
   @override
-  Widget buildItem(
-      BuildContext context, int section, int index, int absoluteIndex) {
-    return children[section][index + 1];
+  Widget buildItem(BuildContext context, IndexPath index) {
+    return children[index.section][index.child + 1];
   }
 
   @override
-  Widget buildSection(BuildContext context, int section, int absoluteIndex) {
-    return children[section][0];
+  Widget buildSection(
+      BuildContext context, SectionPath index, bool isFloating) {
+    if (isFloating && floatingSectionBuilder != null) {
+      return floatingSectionBuilder(context, index, true);
+    }
+    return children[index.section][0];
   }
 
   @override
