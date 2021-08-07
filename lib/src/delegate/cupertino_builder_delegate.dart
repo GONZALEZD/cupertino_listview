@@ -1,20 +1,21 @@
-import 'cupertino_list_delegate.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:cupertino_listview/src/widget_builder.dart';
+import 'package:flutter/cupertino.dart';
+
+import 'cupertino_list_delegate.dart';
 
 class CupertinoListBuilderDelegate extends CupertinoListDelegate {
   final SectionBuilder sectionBuilder;
   final SectionChildBuilder childBuilder;
   final SectionItemCount itemInSectionCount;
-  final ChildSeparatorBuilder separatorBuilder;
+  final ChildSeparatorBuilder? separatorBuilder;
 
   bool get _hasSeparator => separatorBuilder != null;
 
   CupertinoListBuilderDelegate(
-      {int sectionCount,
-      this.sectionBuilder,
-      this.childBuilder,
-      this.itemInSectionCount,
+      {required int sectionCount,
+      required this.sectionBuilder,
+      required this.childBuilder,
+      required this.itemInSectionCount,
       this.separatorBuilder})
       : super(sectionCount: sectionCount);
 
@@ -22,7 +23,7 @@ class CupertinoListBuilderDelegate extends CupertinoListDelegate {
   Widget buildItem(BuildContext context, IndexPath index) {
     if (_hasSeparator) {
       final builder = index.child.isEven ? childBuilder : separatorBuilder;
-      return builder(context, index.copyWith(child: index.child ~/ 2));
+      return builder!(context, index.copyWith(child: index.child ~/ 2));
     } else {
       return childBuilder(context, index);
     }
@@ -34,7 +35,7 @@ class CupertinoListBuilderDelegate extends CupertinoListDelegate {
       sectionBuilder(context, index, isAbsolute);
 
   @override
-  int itemCount({int section}) {
+  int itemCount({required int section}) {
     final childCount = itemInSectionCount(section);
     return _hasSeparator ? childCount * 2 - 1 : childCount;
   }

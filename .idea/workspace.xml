@@ -1,26 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc6eb518-8c0a-4360-a579-3d0a7f85ee3a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/doc/cupertino_listview2.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/widget_builder.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/cupertino_listview.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/cupertino_listview.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/cupertino_listview_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/cupertino_listview_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/delegate/cupertino_builder_delegate.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/delegate/cupertino_builder_delegate.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/delegate/cupertino_child_list_delegate.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/delegate/cupertino_child_list_delegate.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/delegate/cupertino_list_delegate.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/delegate/cupertino_list_delegate.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-    </list>
+    <list default="true" id="cc6eb518-8c0a-4360-a579-3d0a7f85ee3a" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/david/.android/avd/Phone_Pixel_5_API_29.avd]" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -60,6 +50,7 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -73,58 +64,15 @@
     </task>
     <servers />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="22" y="90" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1610640785643">
-      <screen x="0" y="25" width="1440" height="813" />
-    </state>
-    <state x="22" y="90" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1440.813@0.25.1440.813" timestamp="1610640785643" />
-    <state x="280" y="237" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1610637965419">
-      <screen x="0" y="25" width="1440" height="813" />
-    </state>
-    <state x="280" y="237" key="#com.intellij.fileTypes.FileTypeChooser/0.25.1440.813@0.25.1440.813" timestamp="1610637965419" />
-    <state x="370" y="151" key="#com.intellij.ide.util.MemberChooser" timestamp="1610969518909">
-      <screen x="0" y="25" width="1440" height="813" />
-    </state>
-    <state x="370" y="151" key="#com.intellij.ide.util.MemberChooser/0.25.1440.813@0.25.1440.813" timestamp="1610969518909" />
-    <state x="295" y="225" key="#com.intellij.ide.util.TreeFileChooserDialog" timestamp="1610640766864">
-      <screen x="0" y="25" width="1440" height="813" />
-    </state>
-    <state x="295" y="225" key="#com.intellij.ide.util.TreeFileChooserDialog/0.25.1440.813@0.25.1440.813" timestamp="1610640766864" />
-    <state x="393" y="190" key="FileChooserDialogImpl" timestamp="1612539605076">
-      <screen x="0" y="25" width="1440" height="813" />
-    </state>
-    <state x="393" y="190" key="FileChooserDialogImpl/0.25.1440.813@0.25.1440.813" timestamp="1612539605076" />
-    <state width="980" height="197" key="GridCell.Tab.0.bottom" timestamp="1612540237733">
-      <screen x="0" y="25" width="1440" height="813" />
-    </state>
-    <state width="980" height="197" key="GridCell.Tab.0.bottom/0.25.1440.813@0.25.1440.813" timestamp="1612540237733" />
-    <state width="980" height="197" key="GridCell.Tab.0.center" timestamp="1612540237733">
-      <screen x="0" y="25" width="1440" height="813" />
-    </state>
-    <state width="980" height="197" key="GridCell.Tab.0.center/0.25.1440.813@0.25.1440.813" timestamp="1612540237733" />
-    <state width="980" height="197" key="GridCell.Tab.0.left" timestamp="1612540237732">
-      <screen x="0" y="25" width="1440" height="813" />
-    </state>
-    <state width="980" height="197" key="GridCell.Tab.0.left/0.25.1440.813@0.25.1440.813" timestamp="1612540237732" />
-    <state width="980" height="197" key="GridCell.Tab.0.right" timestamp="1612540237733">
-      <screen x="0" y="25" width="1440" height="813" />
-    </state>
-    <state width="980" height="197" key="GridCell.Tab.0.right/0.25.1440.813@0.25.1440.813" timestamp="1612540237733" />
-    <state x="59" y="67" key="SettingsEditor" timestamp="1610998132726">
-      <screen x="0" y="25" width="1440" height="813" />
-    </state>
-    <state x="59" y="67" key="SettingsEditor/0.25.1440.813@0.25.1440.813" timestamp="1610998132726" />
-    <state x="250" y="186" width="710" height="490" key="find.popup" timestamp="1612539613784">
-      <screen x="0" y="25" width="1440" height="813" />
-    </state>
-    <state x="250" y="186" width="710" height="490" key="find.popup/0.25.1440.813@0.25.1440.813" timestamp="1612539613784" />
-    <state width="460" height="114" key="javadoc.popup.new" timestamp="1612542062910">
-      <screen x="0" y="25" width="1440" height="813" />
-    </state>
-    <state width="460" height="114" key="javadoc.popup.new/0.25.1440.813@0.25.1440.813" timestamp="1612542062910" />
-    <state x="222" y="162" width="670" height="676" key="search.everywhere.popup" timestamp="1611313020658">
-      <screen x="0" y="25" width="1440" height="813" />
-    </state>
-    <state x="222" y="162" width="670" height="676" key="search.everywhere.popup/0.25.1440.813@0.25.1440.813" timestamp="1611313020658" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/src/delegate/cupertino_child_list_delegate.dart</url>
+          <line>21</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -1,3 +1,7 @@
+## [2.0.0] Null Safety migration
+* Migration to null safety
+* Change linter to flutter_lints
+
 ## [1.0.5] Fix ScrollController bug
 
 * Fix a bug where scroll controller was disposed on widget update. 

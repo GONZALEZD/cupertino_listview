@@ -17,10 +17,10 @@ class CupertinoListView extends StatefulWidget {
   final CupertinoListDelegate _delegate;
 
   /// Same as [ListView].scrollController: "control the position to which this scroll view is scrolled".
-  final ScrollController controller;
+  final ScrollController? controller;
 
   /// {@macro flutter.rendering.viewport.cacheExtent}
-  final double cacheExtent;
+  final double? cacheExtent;
 
   /// Same as [ListView].clipBehavior: "ways to clip a widget's content".
   final Clip clipBehavior;
@@ -29,29 +29,28 @@ class CupertinoListView extends StatefulWidget {
   final DragStartBehavior dragStartBehavior;
 
   /// Same as [ListView].physics: "How the scroll view should respond to user input".
-  final ScrollPhysics physics;
+  final ScrollPhysics? physics;
 
   /// Same as [ListView].restorationId: used "to save and restore the scroll offset of the scrollable".
-  final String restorationId;
+  final String? restorationId;
 
   /// The amount of space by which to inset the children.
-  final EdgeInsets padding;
+  final EdgeInsets? padding;
 
   /// Defines how the list will dismiss the keyboard automatically.
   final ScrollViewKeyboardDismissBehavior keyboardDismissBehavior;
 
   CupertinoListView._(
-      {@required CupertinoListDelegate delegate,
+      {required CupertinoListDelegate delegate,
       this.controller,
       this.cacheExtent,
-      this.clipBehavior,
-      this.dragStartBehavior,
+      required this.clipBehavior,
+      required this.dragStartBehavior,
       this.padding,
       this.restorationId,
       this.physics,
-      this.keyboardDismissBehavior})
-      : _delegate = delegate,
-        assert(delegate != null);
+      required this.keyboardDismissBehavior})
+      : _delegate = delegate;
 
   /// Creates a scrollable, linear array of widgets that are created on demand,
   /// defined by sections.
@@ -70,25 +69,22 @@ class CupertinoListView extends StatefulWidget {
   /// number of children because the builder is called only for those children
   /// that are actually visible.
   factory CupertinoListView.builder({
-    @required int sectionCount,
-    @required SectionBuilder sectionBuilder,
-    @required SectionChildBuilder childBuilder,
-    @required SectionItemCount itemInSectionCount,
-    ChildSeparatorBuilder separatorBuilder,
-    ScrollController controller,
-    double cacheExtent,
+    required int sectionCount,
+    required SectionBuilder sectionBuilder,
+    required SectionChildBuilder childBuilder,
+    required SectionItemCount itemInSectionCount,
+    ChildSeparatorBuilder? separatorBuilder,
+    ScrollController? controller,
+    double? cacheExtent,
     Clip clipBehavior = Clip.hardEdge,
     DragStartBehavior dragStartBehavior = DragStartBehavior.start,
-    ScrollPhysics physics,
-    String restorationId,
-    EdgeInsets padding,
+    ScrollPhysics? physics,
+    String? restorationId,
+    EdgeInsets? padding,
     ScrollViewKeyboardDismissBehavior keyboardDismissBehavior =
         ScrollViewKeyboardDismissBehavior.manual,
   }) {
-    assert(sectionBuilder != null);
-    assert(childBuilder != null);
-    assert(itemInSectionCount != null);
-    assert(sectionCount != null && sectionCount > 0);
+    assert(sectionCount > 0);
 
     final delegate = CupertinoListBuilderDelegate(
       sectionCount: sectionCount,
@@ -97,7 +93,6 @@ class CupertinoListView extends StatefulWidget {
       itemInSectionCount: itemInSectionCount,
       separatorBuilder: separatorBuilder,
     );
-    delegate.setup();
     return CupertinoListView._(
       delegate: delegate,
       controller: controller,
@@ -125,28 +120,27 @@ class CupertinoListView extends StatefulWidget {
   /// child that could possibly be displayed in the list view instead of just
   /// those children that are actually visible.
   factory CupertinoListView({
-    @required List<List<Widget>> children,
-    ScrollController controller,
-    double cacheExtent,
+    required List<List<Widget>> children,
+    ScrollController? controller,
+    double? cacheExtent,
     Clip clipBehavior = Clip.hardEdge,
     DragStartBehavior dragStartBehavior = DragStartBehavior.start,
-    ScrollPhysics physics,
-    String restorationId,
-    EdgeInsets padding,
+    ScrollPhysics? physics,
+    String? restorationId,
+    EdgeInsets? padding,
     ScrollViewKeyboardDismissBehavior keyboardDismissBehavior =
         ScrollViewKeyboardDismissBehavior.manual,
-    SectionBuilder floatingSectionBuilder,
+    required SectionBuilder floatingSectionBuilder,
   }) {
-    assert(children != null && children.isNotEmpty);
+    assert(children.isNotEmpty);
     children.forEach((section) {
-      assert(section != null && section.length > 1);
+      assert(section.length > 1);
     });
 
     final delegate = CupertinoChildListDelegate(
       children: children,
       floatingSectionBuilder: floatingSectionBuilder,
     );
-    delegate.setup();
     return CupertinoListView._(
       delegate: delegate,
       controller: controller,
@@ -165,13 +159,13 @@ class CupertinoListView extends StatefulWidget {
 }
 
 class _CupertinoListViewState extends State<CupertinoListView> {
-  ScrollController _controller;
-  bool _isMyController;
+  ScrollController? _controller;
+  late bool _isMyController;
 
   _CupertinoListViewState();
 
-  Widget _header;
-  GlobalKey _listKey;
+  late Widget _header;
+  late final GlobalKey _listKey;
 
   @override
   void initState() {
@@ -184,14 +178,14 @@ class _CupertinoListViewState extends State<CupertinoListView> {
   }
 
   void _resetController() {
-    if (_controller != null && _isMyController) {
-      _controller.removeListener(_onScrollChange);
-      _controller.dispose();
+    if (_isMyController) {
+      _controller?.removeListener(_onScrollChange);
+      _controller?.dispose();
     }
     _controller = widget.controller ?? ScrollController();
     _isMyController = widget.controller == null;
-    _controller.addListener(_onScrollChange);
-    WidgetsBinding.instance.addPostFrameCallback(_refreshFirstTime);
+    _controller!.addListener(_onScrollChange);
+    WidgetsBinding.instance!.addPostFrameCallback(_refreshFirstTime);
   }
 
   void _refreshFirstTime(Duration timestamp) {
@@ -208,9 +202,9 @@ class _CupertinoListViewState extends State<CupertinoListView> {
 
   @override
   void dispose() {
-    _controller.removeListener(_onScrollChange);
+    _controller?.removeListener(_onScrollChange);
     if (_isMyController) {
-      _controller.dispose();
+      _controller?.dispose();
     }
     super.dispose();
   }
@@ -220,7 +214,7 @@ class _CupertinoListViewState extends State<CupertinoListView> {
       _header = widget._delegate.buildSectionOverlay(
         _listKey,
         context,
-        _controller.offset,
+        _controller?.offset ?? 0.0,
       );
     });
   }
@@ -244,7 +238,7 @@ class _CupertinoListViewState extends State<CupertinoListView> {
       ],
     );
     if (widget.padding != null) {
-      child = Padding(padding: widget.padding, child: child);
+      child = Padding(padding: widget.padding!, child: child);
     }
     return child;
   }
@@ -255,14 +249,14 @@ class _HookableListView extends BoxScrollView {
   final CupertinoListDelegate delegate;
 
   _HookableListView({
-    @required this.listKey,
-    @required this.delegate,
-    @required ScrollController controller,
-    double cacheExtent,
+    required this.listKey,
+    required this.delegate,
+    ScrollController? controller,
+    double? cacheExtent,
     Clip clipBehavior = Clip.hardEdge,
     DragStartBehavior dragStartBehavior = DragStartBehavior.start,
-    ScrollPhysics physics,
-    String restorationId,
+    ScrollPhysics? physics,
+    String? restorationId,
     ScrollViewKeyboardDismissBehavior keyboardDismissBehavior =
         ScrollViewKeyboardDismissBehavior.manual,
   }) : super(

@@ -1,11 +1,10 @@
 name: cupertino_listview
 description: Display a vertical list of sections (group of items), respecting iOS UX design, where the current section title remains displayed on top (until the next one push it away).
-version: 1.0.5
+version: 2.0.0
 repository: https://github.com/GONZALEZD/cupertino_listview.git
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
-  flutter: ">=1.17.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -16,7 +15,7 @@ dev_dependencies:
     sdk: flutter
 
   #lint (used by pub package for scoring libraries)
-  pedantic: ^1.9.2
+  flutter_lints: ^1.0.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -2,7 +2,7 @@ class ConsoleAttribute {
   final String console;
   final String attribute;
 
-  ConsoleAttribute({this.console, this.attribute});
+  ConsoleAttribute({required this.console, required this.attribute});
 }
 
 class Section {
@@ -13,7 +13,7 @@ class Section {
 
   ConsoleAttribute operator [](int i) => attributes[i];
 
-  Section({this.name, this.attributes});
+  Section({required this.name, required this.attributes});
 
   static List<Section> allData() {
     final data = {};
@@ -25,7 +25,8 @@ class Section {
       });
     });
     return data
-        .map((key, value) => MapEntry(key, Section(name: key, attributes: value)))
+        .map((key, value) =>
+            MapEntry(key, Section(name: key, attributes: value)))
         .values
         .toList();
   }
@@ -42,10 +43,16 @@ class Console {
   final String discPlayer;
 
   const Console(
-      {this.name, this.date, this.price, this.cpu, this.gpu, this.hdd, this.flashMem, this.discPlayer});
+      {required this.name,
+      required this.date,
+      required this.price,
+      required this.cpu,
+      required this.gpu,
+      required this.hdd,
+      required this.flashMem,
+      required this.discPlayer});
 
-  Map<String, String> get characteristics =>
-      {
+  Map<String, String> get characteristics => {
         'Release date': date,
         'Price': price,
         'CPU': cpu,
@@ -104,14 +111,14 @@ class Console {
     date: '3 mars 2017',
     price: '299,99 \$US',
     cpu: 'Octa-core (4×ARM Cortex-A57 & 4×ARM Cortex-A53) @ 1.020 GHz',
-    gpu: 'Nvidia GM20B Maxwell-based GPU @ 307.2 - 384 MHz while undocked, 307.2 - 768 MHz while docked',
+    gpu:
+        'Nvidia GM20B Maxwell-based GPU @ 307.2 - 384 MHz while undocked, 307.2 - 768 MHz while docked',
     hdd: '32 GB Internal flash memory',
     flashMem: '8 GB',
     discPlayer: ' - ',
   );
 
-  static List<Console> get all =>
-      [
+  static List<Console> get all => [
         Console.ps5,
         Console.ps5DigitalEdition,
         Console.xBoxSeriesX,

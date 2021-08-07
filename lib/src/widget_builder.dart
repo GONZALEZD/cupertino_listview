@@ -8,7 +8,7 @@ class SectionPath {
   /// Index of the element in the whole list
   final int absoluteIndex;
 
-  SectionPath({this.section, this.absoluteIndex});
+  SectionPath({required this.section, required this.absoluteIndex});
 }
 
 /// Class describing a child's index of the [CupertinoListView]
@@ -16,10 +16,11 @@ class IndexPath extends SectionPath {
   /// Index of the child in the current section
   final int child;
 
-  IndexPath({int section, this.child, int absoluteIndex})
+  IndexPath(
+      {required int section, required this.child, required int absoluteIndex})
       : super(section: section, absoluteIndex: absoluteIndex);
 
-  IndexPath copyWith({int section, int child, int absoluteIndex}) {
+  IndexPath copyWith({int? section, int? child, int? absoluteIndex}) {
     return IndexPath(
       section: section ?? this.section,
       child: child ?? this.child,

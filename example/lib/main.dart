@@ -1,7 +1,8 @@
 import 'package:cupertino_listview/cupertino_listview.dart';
-import 'src/console.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+import 'src/console.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -32,7 +33,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final _data = Section.allData();
-  ScrollController _scrollController;
+  late final ScrollController _scrollController;
 
   @override
   void initState() {
@@ -65,14 +66,16 @@ class _MyHomePageState extends State<MyHomePage> {
     return Divider(indent: 20.0, endIndent: 20.0);
   }
 
-  Widget _buildSection(BuildContext context, SectionPath index, bool isFloating) {
+  Widget _buildSection(
+      BuildContext context, SectionPath index, bool isFloating) {
     final style = Theme.of(context).textTheme.headline6;
     return Container(
       height: 80.0,
       alignment: Alignment.centerLeft,
       padding: EdgeInsets.only(left: 20.0),
       color: Theme.of(context).primaryColorDark,
-      child: Text(_data[index.section].name, style: style.copyWith(color: Colors.white)),
+      child: Text(_data[index.section].name,
+          style: style!.copyWith(color: Colors.white)),
     );
   }
 
