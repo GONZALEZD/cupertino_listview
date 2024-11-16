@@ -45,20 +45,20 @@ https://medium.com/flutter-community/flutter-ios-styled-listview-cc21d8574dd5
 
 ### CupertinoListView properties
 
-| Parameter            | Description                                       | Default value  |
-| -------------------- | ------------------------------------------------- | -------------- |
-| children             | List of sections. A section is a list with the section title as its first element, followed by section's items. | -                       |
-| floatingSectionBuilder | Optional builder used to create floating section widget. This builder is intended to differentiate the section widget from list and the floating one. | -                       | 
-| sectionCount         | Number of sections. | -                       |
-| itemInSectionCount   | Retrieve the number of items of sections. | -                       |
-| sectionBuilder       | Used to build the section title. | -                       |
-| childBuilder         | Used to build an item of a section. | -                       |
-| separatorBuilder     | Used to build separator between two children of sections. | -                       |
-| controller           | Control the position to which this scroll view is scrolled. | -                       |
-| cacheExtent          | Cache elements used to display faster and smoother the list. | -                       |
-| clipBehavior         | Same as [ListView].clipBehavior: "ways to clip a widget's content". | Clip.hardEdge |
-| dragStartBehavior    | Same as [ListView].dragStartBehavior: "Determines the way that drag start behavior is handled". | DragStartBehavior.start |
-| physics              | Same as [ListView].physics: "How the scroll view should respond to user input". | -                       |
-| restorationId        | Same as [ListView].restorationId: used "to save and restore the scroll offset of the scrollable". | -                       |
-| padding              | The amount of space by which to inset the children. | -                       |
-| keyboardDismissBehavior | Defines how the list will dismiss the keyboard automatically. | manual |
+| Parameter            | Description                                                                                                                                           | Default value  |
+| -------------------- |-------------------------------------------------------------------------------------------------------------------------------------------------------| -------------- |
+| children             | List of sections. A section is a list with the section title as its first element, followed by section's items. Sections can be empty.                | -                       |
+| floatingSectionBuilder | Required builder used to create floating section widget. This builder is intended to differentiate the section widget from list and the floating one. | -                       | 
+| sectionCount         | Number of sections.                                                                                                                                   | -                       |
+| itemInSectionCount   | Retrieve the number of items of sections.                                                                                                             | -                       |
+| sectionBuilder       | Used to build the section title.                                                                                                                      | -                       |
+| childBuilder         | Used to build an item of a section.                                                                                                                   | -                       |
+| separatorBuilder     | Used to build separator between two children of sections.                                                                                             | -                       |
+| controller           | Control the position to which this scroll view is scrolled.                                                                                           | -                       |
+| cacheExtent          | Cache elements used to display faster and smoother the list.                                                                                          | -                       |
+| clipBehavior         | Same as [ListView].clipBehavior: "ways to clip a widget's content".                                                                                   | Clip.hardEdge |
+| dragStartBehavior    | Same as [ListView].dragStartBehavior: "Determines the way that drag start behavior is handled".                                                       | DragStartBehavior.start |
+| physics              | Same as [ListView].physics: "How the scroll view should respond to user input".                                                                       | -                       |
+| restorationId        | Same as [ListView].restorationId: used "to save and restore the scroll offset of the scrollable".                                                     | -                       |
+| padding              | The amount of space by which to inset the children.                                                                                                   | -                       |
+| keyboardDismissBehavior | Defines how the list will dismiss the keyboard automatically.                                                                                         | manual |

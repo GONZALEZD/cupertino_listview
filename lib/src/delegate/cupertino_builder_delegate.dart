@@ -37,7 +37,7 @@ class CupertinoListBuilderDelegate extends CupertinoListDelegate {
   @override
   int itemCount({required int section}) {
     final childCount = itemInSectionCount(section);
-    return _hasSeparator ? childCount * 2 - 1 : childCount;
+    return (_hasSeparator && childCount > 0) ? childCount * 2 - 1 : childCount;
   }
 
   @override

@@ -24,11 +24,13 @@ class Section {
         data[key] = values;
       });
     });
-    return data
+    List<Section> sections =  data
         .map((key, value) =>
             MapEntry(key, Section(name: key, attributes: value)))
         .values
         .toList();
+    sections.insert(0, Section(name: "EMPTY SECTION", attributes: List.empty()));
+    return sections;
   }
 }
 

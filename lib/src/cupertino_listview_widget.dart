@@ -133,9 +133,6 @@ class CupertinoListView extends StatefulWidget {
     required SectionBuilder floatingSectionBuilder,
   }) {
     assert(children.isNotEmpty);
-    children.forEach((section) {
-      assert(section.length > 1);
-    });
 
     final delegate = CupertinoChildListDelegate(
       children: children,
@@ -185,7 +182,7 @@ class _CupertinoListViewState extends State<CupertinoListView> {
     _controller = widget.controller ?? ScrollController();
     _isMyController = widget.controller == null;
     _controller!.addListener(_onScrollChange);
-    WidgetsBinding.instance!.addPostFrameCallback(_refreshFirstTime);
+    WidgetsBinding.instance.addPostFrameCallback(_refreshFirstTime);
   }
 
   void _refreshFirstTime(Duration timestamp) {

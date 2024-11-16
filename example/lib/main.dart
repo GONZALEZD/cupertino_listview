@@ -68,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget _buildSection(
       BuildContext context, SectionPath index, bool isFloating) {
-    final style = Theme.of(context).textTheme.headline6;
+    final style = Theme.of(context).textTheme.headlineMedium;
     return Container(
       height: 80.0,
       alignment: Alignment.centerLeft,

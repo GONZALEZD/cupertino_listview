@@ -1,3 +1,6 @@
+## [3.0.0] Update flutter versions + Empty sections
+* Add possibility to show empty section (display only header).
+
 ## [2.0.0] Null Safety migration
 * Migration to null safety
 * Change linter to flutter_lints
